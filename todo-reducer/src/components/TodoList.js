@@ -1,23 +1,24 @@
 import React from 'react';
-import {listOfTodo}{reducer}, from '.'
+import Todo from './Todo'
 
-const TodoList = ({listOfTodo,reducer }) => {
-    const [state, dispatch] = useReducer(reducer, initialState)
+const TodoList = ({listOfTodo,taskComplete,clearTask }) => {
+    
 
     return (
-        <div className="things-todo">
+        <ol className="things-todo">
 
             {listOfTodo.map(item => (
-                <div><Todo
+                <li><Todo
                     key={item.id}
                     item={item}
-                    toggleCompleted={toggleCompleted}
-                /></div>
+                    taskComplete={taskComplete}
+
+                /></li>
             ))}
-            <button className='clear-btn' onClick={clearCompleted}>
+            <button className='clear-btn' onClick={clearTask}>
                 Clear Task
             </button>
-        </div>
+        </ol>
     );
 };
 export default TodoList;

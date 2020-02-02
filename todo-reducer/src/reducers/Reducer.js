@@ -27,17 +27,17 @@ export const  initialState = {
 };
 
 export const reducer = (state, action) => {
-    if(action.type === 'add'){
+    if(action.type === 'ADD_TASK'){
         return{ ...state, listOfTodo: [...state.listOfTodo, {item: action.payload, completed: false, id: Date.now()}]
     };
-    }else if (action.type === 'remove'){
+    }else if (action.type === 'CLEAR_TASK'){
         console.log(state.listOfTodo)
-        return {listOfTodo: state.listOfTodo.filter(clear => {
+        return {...state,listOfTodo: state.listOfTodo.filter(clear => {
               return  clear.completed === false})
         }
     
-    }else if(action.type === 'toggle'){
-        return{listOfTodo: state.listOfTodo.map(choice => {
+    }else if(action.type === 'TASK_COMPLETE'){
+        return{...state,listOfTodo: state.listOfTodo.map(choice => {
             if(choice.id === action.payload){
                
                 return{

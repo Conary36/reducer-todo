@@ -1,28 +1,27 @@
 import React, {useReducer}from 'react';
-import {initialState, reducer} from './reducers/Reducer'
+import {initialState, reducer} from './reducers/Reducer';
 import './App.css';
-// import Remove_todo from './components/Remove_todo'
-// import TodoList from '../src/components/TodoList'
+import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm'
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const addTask = item => {
     dispatch({
-      type: 'add',
+      type: 'ADD_TASK',
       payload: item
     });
   }
   const taskComplete = id => {
     dispatch({
-      type: 'toggle',
-      id: id
+      type: 'TASK_COMPLETE',
+      payload: id
     });
   }
-  const clearTask = id => {
+  const clearTask = () => {
     dispatch({
-      type: 'remove',
-      id: id
+      type: 'CLEAR_TASK'
     });
   }
 
@@ -32,8 +31,16 @@ function App() {
 
   return (
     <div className="App">
-        
+    <TodoForm addNewTodo={addTask}/>
+    <TodoList 
+        listOfTodo={state.listOfTodo}
+        taskComplete={taskComplete}
+        clearTask={clearTask}
+    />
+
     </div>
+        
+  
   );
 }
 
