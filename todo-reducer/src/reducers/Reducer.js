@@ -8,9 +8,19 @@ export const  initialState = {
             id: 1
         },
         {
-            item: 'Do nothing',
-            completed: true,
+            item: 'Go to gym',
+            completed: false,
             id: 2
+        },
+        {
+            item: 'Buy Groceries',
+            completed: false,
+            id: 3
+        },
+        {
+            item: 'Go for walk',
+            completed: false,
+            id: 4
         },
     ],
 
@@ -42,8 +52,8 @@ export const reducer = (state, action) => {
 
 
 
-// reducer(initialState, {type: 'add'});
-// reducer(initialState, {type: 'remove', payload: ''});
+reducer(initialState, {type: 'add'});
+reducer(initialState, {type: 'remove', payload: ''});
 
 //  function todoCounter(){
     

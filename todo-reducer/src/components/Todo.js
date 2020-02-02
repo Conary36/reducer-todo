@@ -1,12 +1,14 @@
 import React from 'react';
+import { initialState, reducer } from '../reducers/Reducer'
 
+const Todo = ({ item, completed }) => {
+    const [state, dispatch] = useReducer(reducer, initialState)
 
-const Todo = ({ item, toggleCompleted }) => {
 
 
     return (
 
-        <div onClick={() => toggleCompleted(item.id)}
+        <div onClick={() => completed(item.id)}
             className={`item ${item.completed ? "completed" : ""}`}
         >
             <p>{item.task}</p>
